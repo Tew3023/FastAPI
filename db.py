@@ -1,8 +1,12 @@
 # db.py
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from dotenv import load_dotenv
+import os
 
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://Wasan@sun:)Ai_C40bj]6ssI9W@ideatrade.serveftp.net:51410/db_ideatrade"
+load_dotenv()
+
+SQLALCHEMY_DATABASE_URL = os.getenv('SQLALCHEMY_DATABASE_URL')
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
